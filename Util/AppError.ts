@@ -22,7 +22,7 @@ export class AppError extends Error {
     this.httpCode = args.httpCode;
     this.name = args.name || "Error";
 
-    if (typeof this.isOperational !== "undefined") {
+    if (typeof args.isOperational !== "undefined") {
       this.isOperational = args.isOperational;
     }
 
