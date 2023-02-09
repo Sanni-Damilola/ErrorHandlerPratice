@@ -1,8 +1,13 @@
-import express, { Application, Request, Response, NextFunction } from "express";
-import morgan from "morgan";
+import exppress, {
+  Application,
+  Request,
+  Response,
+  NextFunction,
+} from "express";
+
 import cors from "cors";
+import morgan from "morgan";
 
 export const appConfig = (app: Application) => {
-  // middleware
-  app.use(express.json()).use(morgan("dev")).use(cors());
+  app.use(exppress.json()).use(cors()).use(morgan("dev"));
 };
