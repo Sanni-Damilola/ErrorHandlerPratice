@@ -10,11 +10,11 @@ const devErrorHandler = (err: AppError, res: Response) => {
   });
 };
 
-export const erroHandler = (
-  err: AppError,
+export const errorHander = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
+  err: AppError
 ) => {
   devErrorHandler(err, res);
 };
