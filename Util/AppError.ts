@@ -19,7 +19,6 @@ interface AppErrorArgs {
 export class AppError extends Error {
   public readonly isOperational: boolean = true;
   public readonly name: string;
-  public readonly message: string;
   public readonly httpCode: HttpCode;
 
   constructor(args: AppErrorArgs) {

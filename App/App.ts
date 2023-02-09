@@ -8,14 +8,14 @@ import exppress, {
 import cors from "cors";
 import morgan from "morgan";
 import { AppError, HttpCode } from "../Util/AppError";
-import { erroHandler } from "../Middlewares/errorHandler";
+import { errorHandler } from "../Middlewares/errorHandler";
 
 export const appConfig = (app: Application) => {
   app
     .use(exppress.json())
     .use(cors())
     .use(morgan("dev"))
-    .use("*", (req: Request, res: Response, next: NextFunction) => {
+    .all("*", (req: Request, res: Response, next: NextFunction) => {
       next(
         new AppError({
           message: `This Routes ${req.originalUrl} does not exist`,
@@ -24,5 +24,5 @@ export const appConfig = (app: Application) => {
         })
       );
     })
-    .use(erroHandler);
+    .use(errorHandler);
 };
