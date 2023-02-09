@@ -4,19 +4,29 @@ import { IUser } from "../interface/interface";
 
 interface ISchema extends IUser, Document {}
 
-const userSchema = new Schema<IUser>({
-  name: {
-    type: String,
-    required: [true, "Enter your name"],
+const userSchema = new Schema<IUser>(
+  {
+    name: {
+      type: String,
+      required: [true, "Enter your name"],
+    },
+    email: {
+      type: String,
+      required: [true, "Enter a your Email"],
+      lowercase: true,
+      trim: true,
+      unique: true,
+      validate: [isEmail, "Please Enter a valid Email"],
+    },
+    password: {
+      type: String,
+      required: [true, "Enter your name"],
+      unique: true,
+      min: 6,
+    },
   },
-  email: {
-    type: String,
-    required: [true, "Enter a vaild Email"],
-    isEmail: []
-    
-  },
-  password: {
-    type: String,
-    required: [true, "Enter your name"],
-  },
-});
+  {
+    timestamps: true,
+    versionKey: true,
+  }
+);
