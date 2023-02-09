@@ -14,4 +14,8 @@ export class AppError extends Error {
   public readonly isOprational: boolean = true;
   public readonly message: string;
   public readonly httpCode: HttpCode;
+
+  constructor(args: AppErrorArgs) {
+    super(args.message);
+  }
 }
