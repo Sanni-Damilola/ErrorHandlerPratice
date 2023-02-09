@@ -1,24 +1,17 @@
-export enum httpCode {
+export enum HttpCode {
   OK = 200,
-  CREATED = 201,
-  BAD_REQUEST = 400,
-  UNAUTHORIZED = 401,
-  FORBIDDEN = 403,
-  NOT_FOUND = 404,
-  CONFLICT = 409,
-  INTERNAL_SERVER_ERROR = 500,
 }
 
 interface AppErrorArgs {
   name?: string;
   isOperational?: boolean;
   message: string;
-  httpCode: httpCode;
+  httpCode: HttpCode;
 }
 
 export class AppError extends Error {
   public readonly name: string;
-  public readonly isOperational: boolean = true;
+  public readonly isOprational: boolean = true;
   public readonly message: string;
-  public readonly httpCode: httpCode;
+  public readonly httpCode: HttpCode;
 }
