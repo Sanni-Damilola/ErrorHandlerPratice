@@ -10,19 +10,19 @@ interface AppErrorArgs {
 }
 
 export class AppError extends Error {
+  public readonly isOperational: boolean = true;
   public readonly name: string;
   public readonly message: string;
-  public readonly isOperational: boolean = true;
   public readonly httpCode: HttpCode;
 
   constructor(args: AppErrorArgs) {
     super(args.message);
+
     Object.setPrototypeOf(this, new.target.prototype);
-
-    this.name = args.name || "Error";
     this.httpCode = args.httpCode;
+    this.name = args.name || "Error";
 
-    if (args.isOperational !== undefined) {
+    if (typeof this.isOperational !== "undefined") {
       this.isOperational = args.isOperational;
     }
 
