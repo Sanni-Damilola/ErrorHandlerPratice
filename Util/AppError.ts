@@ -2,7 +2,7 @@ export enum HttpCode {
   OK = 200,
 }
 
-interface AppErrorArgs {
+interface AppErrorAgrs {
   name?: string;
   isOperational?: boolean;
   message: string;
@@ -11,11 +11,14 @@ interface AppErrorArgs {
 
 export class AppError extends Error {
   public readonly name: string;
-  public readonly isOprational: boolean = true;
+  public readonly isOperational: boolean = true;
   public readonly message: string;
   public readonly httpCode: HttpCode;
 
-  constructor(args: AppErrorArgs) {
+  constructor(args: AppErrorAgrs) {
     super(args.message);
+
+    
   }
+  
 }
