@@ -1,16 +1,16 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError, HttpCode } from "../Util/AppError";
 
-const devErrorHandler = (err: AppError, res: Response) => {
+const devErrorHandler = (res: Response, err: AppError) => {
   res.status(HttpCode.INTERNAL_SERVER_ERROR).json({
-    error: err,
     message: err.message,
     stack: err.stack,
+    err: err,
     status: err.httpCode,
   });
 };
 
-export const errorHander = (
+export const erroHandler = (
   req: Request,
   res: Response,
   next: NextFunction,
