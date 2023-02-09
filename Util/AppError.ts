@@ -18,7 +18,6 @@ export class AppError extends Error {
   constructor(args: AppErrorAgrs) {
     super(args.message);
 
-    
+    Object.setPrototypeOf(this, new.target.prototype);
   }
-  
 }
