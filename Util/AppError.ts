@@ -4,10 +4,11 @@ export enum HttpCode {
 
 interface AppErrorArgs {
   name?: string;
-  isOperational?: boolean;
   message: string;
+  isOperational?: boolean;
   httpCode: HttpCode;
 }
+
 export class AppError extends Error {
   public readonly name: string;
   public readonly isOperational: boolean = true;
@@ -15,6 +16,7 @@ export class AppError extends Error {
 
   constructor(args: AppErrorArgs) {
     super(args.name);
+
     Object.setPrototypeOf(this, new.target.prototype);
 
     this.httpCode = args.httpCode;

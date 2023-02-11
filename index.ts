@@ -3,11 +3,11 @@ import { appConfig } from "./App/App";
 import { config } from "./Config/db";
 
 const app: Application = express();
+const port: number = 2001;
 
-const port: number = 3000;
 appConfig(app);
 config();
 
 app.listen(port, () => {
-  console.log("Done on port", port);
+  console.log("Don on Port", port);
 });

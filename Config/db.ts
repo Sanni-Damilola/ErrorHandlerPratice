@@ -1,15 +1,12 @@
 import mongoose from "mongoose";
 
-const lifeUrl: string =
-  "mongodb+srv://sannidatabase:sannidatabase@cluster0.zh68ie9.mongodb.net/test";
-
-const loaclUrl: string = "mongodb://localhost/praticeErrorHandler";
+const loclUrl: string = "mongodb://localhost/praticeErrorHander";
 
 export const config = async (): Promise<void> => {
   try {
-    const connect = await mongoose.connect(lifeUrl);
-    console.log("Conenected to ", connect.connection.host);
+    const connect = await mongoose.connect(loclUrl);
+    console.log("connected to db ", mongoose.connection.host);
   } catch (error: any) {
-    console.log("An Error Occured in DB", error.message);
+    console.log("An Error in DB", error.messsage);
   }
 };
