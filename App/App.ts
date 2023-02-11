@@ -1,28 +1,23 @@
-import exppress, {
-  Application,
-  Request,
-  Response,
-  NextFunction,
-} from "express";
-
-import cors from "cors";
+import express, { Request, Response, NextFunction, Application } from "express";
 import morgan from "morgan";
+import cors from "cors";
 import { AppError, HttpCode } from "../Util/AppError";
 import { errorHandler } from "../Middlewares/errorHandler";
 
 export const appConfig = (app: Application) => {
   app
-    .use(exppress.json())
-    .use(cors())
+    .use(express.json())
     .use(morgan("dev"))
+    .use(cors())
     .all("*", (req: Request, res: Response, next: NextFunction) => {
       next(
         new AppError({
-          message: `This Routes ${req.originalUrl} does not exist`,
-          httpCode: HttpCode.NOT_FOUND,
+          message: "Route not found",
           isOperational: true,
+          httpCode: HttpCode.OK,
         })
       );
     })
+
     .use(errorHandler);
 };
