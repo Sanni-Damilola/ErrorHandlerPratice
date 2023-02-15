@@ -14,13 +14,13 @@ export const validate = (
   });
 
   try {
-  } catch (error) {
     value.error
       ? next(
           new AppError({
             httpCode: HttpCode.UNPROCESSABLE_IDENTITY,
+            message: value.error.details[0].message,
           })
         )
       : next();
-  }
+  } catch (error) {}
 };
