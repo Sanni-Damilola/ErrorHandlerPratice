@@ -12,4 +12,14 @@ export const validate = (
     abortEarly: false,
     stripUnknown: true,
   });
+
+  try {
+    
+  } catch (error) {
+   value.error ? next(
+    new AppError({
+        
+    })
+   ) 
+  }
 };
