@@ -22,5 +22,7 @@ export const validate = (
           })
         )
       : next();
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
