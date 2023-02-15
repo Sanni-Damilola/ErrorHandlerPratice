@@ -1,5 +1,6 @@
 import { NextFunction } from "express";
 import Joi from "joi";
+import { AppError, HttpCode } from "../Util/AppError";
 
 export const validate = (
   schemaName: Joi.ObjectSchema,
@@ -13,8 +14,15 @@ export const validate = (
   });
 
   try {
-    
+    value.error
+      ? next(
+          new AppError({
+            message: value.error.details[0].message,
+            httpCode: HttpCode.UNPROCESSABLE_IDENTITY,
+          })
+        )
+      : next();
   } catch (error) {
-    
+    console.log(error);
   }
 };
