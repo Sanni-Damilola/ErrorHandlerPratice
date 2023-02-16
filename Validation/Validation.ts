@@ -2,7 +2,7 @@ import { NextFunction } from "express";
 import Joi from "joi";
 import { AppError, HttpCode } from "../Util/AppError";
 
-export const validate = (
+export const validation = (
   schemaName: Joi.ObjectSchema,
   body: object,
   next: NextFunction
