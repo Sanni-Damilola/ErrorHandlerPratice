@@ -1,6 +1,7 @@
 import express, { Application } from "express";
+import { environmentsVarribales } from "./Config/environmentVaribles";
 
-const port: number = 2001;
+const port = environmentsVarribales.PORT;
 const app: Application = express();
 
 app.listen(port, () => {
