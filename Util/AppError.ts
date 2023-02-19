@@ -1,4 +1,6 @@
-export enum httpCode {
+import { object } from "joi";
+
+export enum HttpCode {
   OK = 200,
   CREATED = 201,
   BAD_REQUEST = 400,
@@ -14,11 +16,25 @@ interface argsError {
   name?: string;
   isOperational?: boolean;
   message: string;
-  HttpCode: httpCode;
+  httpCode: HttpCode;
 }
 
-
 export class AppError extends Error {
-public readonly message: string
+  public readonly message: string;
+  public readonly isOperational: boolean = true;
+  public readonly httpCode: HttpCode;
 
+  constructor(args: argsError) {
+    super(args.message);
+    Object.setPrototypeOf(this, new.target.prototype);
+
+    this.name = args.name || "Error";
+    this.httpCode = args.httpCode;
+
+    if (args.isOperational !== undefined) {
+      this.isOperational = args.isOperational;
+    }
+
+    Error.captureStackTrace(this);
+  }
 }
