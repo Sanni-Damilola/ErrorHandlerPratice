@@ -9,3 +9,12 @@ const devError = (err: AppError, res: Response) => {
     status: err.httpCode,
   });
 };
+
+export const asyncHandler = (
+  err: AppError,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  devError(err, res);
+};
