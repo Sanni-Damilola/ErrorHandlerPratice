@@ -19,5 +19,6 @@ interface argsError {
 
 
 export class AppError extends Error {
-  
+public readonly message: string
+
 }
